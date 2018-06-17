@@ -55,7 +55,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 317);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(618, 376);
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(618, 225);
             this.dataGridView1.TabIndex = 0;
             // 
             // Key
@@ -173,7 +174,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Data2JsonRequestControl";
-            this.Size = new System.Drawing.Size(610, 528);
+            this.Size = new System.Drawing.Size(627, 545);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

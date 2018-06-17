@@ -40,7 +40,6 @@ namespace Data2Json
                     HeaderBox.Text = "Null";
                 }
 
-
             }
 
         }
@@ -68,8 +67,6 @@ namespace Data2Json
 
                             oscar.Add(System.Web.HttpUtility.UrlDecode(formParameter[0]), System.Web.HttpUtility.UrlDecode(formParameter[1]));
                             PopulateGrid(oscar);
-
-
                         }
                         string strSerializeJSON = JsonConvert.SerializeObject(oscar,Formatting.Indented);
                         DataBox.Text = strSerializeJSON;
