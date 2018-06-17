@@ -52,10 +52,10 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
             this.Value});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 287);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 317);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(618, 449);
+            this.dataGridView1.Size = new System.Drawing.Size(618, 376);
             this.dataGridView1.TabIndex = 0;
             // 
             // Key
@@ -83,9 +83,11 @@
             // HeaderLabel
             // 
             this.HeaderLabel.AutoSize = true;
-            this.HeaderLabel.Location = new System.Drawing.Point(3, 0);
+            this.HeaderLabel.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.HeaderLabel.ForeColor = System.Drawing.Color.Firebrick;
+            this.HeaderLabel.Location = new System.Drawing.Point(0, 0);
             this.HeaderLabel.Name = "HeaderLabel";
-            this.HeaderLabel.Size = new System.Drawing.Size(41, 12);
+            this.HeaderLabel.Size = new System.Drawing.Size(47, 12);
             this.HeaderLabel.TabIndex = 0;
             this.HeaderLabel.Text = "Header";
             // 
@@ -103,7 +105,7 @@
             // 
             this.panel2.Controls.Add(this.DataBox);
             this.panel2.Controls.Add(this.DataLabel);
-            this.panel2.Location = new System.Drawing.Point(3, 94);
+            this.panel2.Location = new System.Drawing.Point(3, 104);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(618, 85);
             this.panel2.TabIndex = 3;
@@ -121,9 +123,11 @@
             // DataLabel
             // 
             this.DataLabel.AutoSize = true;
-            this.DataLabel.Location = new System.Drawing.Point(3, 0);
+            this.DataLabel.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DataLabel.ForeColor = System.Drawing.Color.Orange;
+            this.DataLabel.Location = new System.Drawing.Point(0, 0);
             this.DataLabel.Name = "DataLabel";
-            this.DataLabel.Size = new System.Drawing.Size(29, 12);
+            this.DataLabel.Size = new System.Drawing.Size(33, 12);
             this.DataLabel.TabIndex = 0;
             this.DataLabel.Text = "Data";
             // 
@@ -131,7 +135,7 @@
             // 
             this.panel3.Controls.Add(this.UrlBox);
             this.panel3.Controls.Add(this.UrlLabel);
-            this.panel3.Location = new System.Drawing.Point(3, 196);
+            this.panel3.Location = new System.Drawing.Point(3, 208);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(618, 85);
             this.panel3.TabIndex = 3;
@@ -148,9 +152,11 @@
             // UrlLabel
             // 
             this.UrlLabel.AutoSize = true;
-            this.UrlLabel.Location = new System.Drawing.Point(3, 0);
+            this.UrlLabel.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.UrlLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.UrlLabel.Location = new System.Drawing.Point(0, 0);
             this.UrlLabel.Name = "UrlLabel";
-            this.UrlLabel.Size = new System.Drawing.Size(23, 12);
+            this.UrlLabel.Size = new System.Drawing.Size(26, 12);
             this.UrlLabel.TabIndex = 0;
             this.UrlLabel.Text = "Url";
             // 
