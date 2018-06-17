@@ -22,12 +22,21 @@ namespace Data2Json
 
         public void Clear()
         {
-            textBox1.Text = string.Empty;
+            DataBox.Text = string.Empty;
+            HeaderBox.Text = string.Empty;
+            UrlBox.Text = string.Empty;
 
         }
         public Dictionary<string, string> Headers
         {
-            set { }
+            set
+            {
+                string s = System.Web.HttpUtility.UrlDecode((new JavaScriptSerializer()).Serialize(value));
+                string str = MyJson.CondenceString(s);
+                MyJson doc = MyJson.ParseObject(str);
+                HeaderBox.Text = doc.ToStrWithFormat();
+
+            }
 
         }
 
@@ -41,7 +50,7 @@ namespace Data2Json
                     string ret = System.Text.Encoding.UTF8.GetString(value);
                     if (ret.StartsWith("[") || ret.StartsWith("{") || ret=="")
                     {
-                        textBox1.Text = "非Post data格式";
+                        DataBox.Text = "Null";
                     }
                     else {
                         string[] formParameters = ret.Split('&');
@@ -61,7 +70,7 @@ namespace Data2Json
                         string s = System.Web.HttpUtility.UrlDecode((new JavaScriptSerializer()).Serialize(oscar));
                         string str = MyJson.CondenceString(s);
                         MyJson doc = MyJson.ParseObject(str);
-                        textBox1.Text = doc.ToStrWithFormat();
+                        DataBox.Text = doc.ToStrWithFormat();
                     }
 
 
@@ -80,6 +89,16 @@ namespace Data2Json
             }
         }
 
+        private void CopyDataContent(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(DataBox.Text);
+            PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(DataBox.Text));
+        }
 
+        private void CopyHeaderContent(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(HeaderBox.Text);
+            PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(HeaderBox.Text));
+        }
     }
 }
