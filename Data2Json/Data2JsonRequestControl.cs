@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using FormateJson;
-
-
+using Newtonsoft.Json;
 
 namespace Data2Json
 {
@@ -33,10 +32,9 @@ namespace Data2Json
             {
                 if (null != value)
                 {
-                    string s = System.Web.HttpUtility.UrlDecode((new JavaScriptSerializer()).Serialize(value));
-                    string str = MyJson.CondenceString(s);
-                    MyJson doc = MyJson.ParseObject(str);
-                    HeaderBox.Text = doc.ToStrWithFormat();
+                    string strSerializeJSON = JsonConvert.SerializeObject(value, Formatting.Indented);
+                    DataBox.Text = strSerializeJSON;
+                    HeaderBox.Text = strSerializeJSON;
                 }
                 else {
                     HeaderBox.Text = "Null";
@@ -69,15 +67,12 @@ namespace Data2Json
                             string[] formParameter = valuePair.Split('=');
 
                             oscar.Add(System.Web.HttpUtility.UrlDecode(formParameter[0]), System.Web.HttpUtility.UrlDecode(formParameter[1]));
-
                             PopulateGrid(oscar);
 
 
                         }
-                        string s = System.Web.HttpUtility.UrlDecode((new JavaScriptSerializer()).Serialize(oscar));
-                        string str = MyJson.CondenceString(s);
-                        MyJson doc = MyJson.ParseObject(str);
-                        DataBox.Text = doc.ToStrWithFormat();
+                        string strSerializeJSON = JsonConvert.SerializeObject(oscar,Formatting.Indented);
+                        DataBox.Text = strSerializeJSON;
                     }
 
 

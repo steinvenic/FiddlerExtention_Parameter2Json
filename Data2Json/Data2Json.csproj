@@ -34,6 +34,10 @@
     <Reference Include="Fiddler">
       <HintPath>..\..\..\..\AppData\Local\Programs\Fiddler\Fiddler.exe</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\AppData\Local\Programs\Fiddler\Inspectors\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -63,10 +67,12 @@
       <DependentUpon>Data2JsonRequestControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\Users\eric\AppData\Local\Programs\Fiddler\Scripts"
-copy "$(TargetPath)" "C:\Users\eric\AppData\Local\Programs\Fiddler\\Inspectors"</PostBuildEvent>
+copy "$(TargetPath)" "C:\Users\eric\AppData\Local\Programs\Fiddler\Inspectors"</PostBuildEvent>
   </PropertyGroup>
 </Project>

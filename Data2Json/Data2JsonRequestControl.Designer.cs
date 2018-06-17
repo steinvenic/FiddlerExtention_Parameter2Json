@@ -32,8 +32,8 @@
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.HeaderLabel = new System.Windows.Forms.Label();
             this.HeaderBox = new System.Windows.Forms.TextBox();
+            this.HeaderLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DataBox = new System.Windows.Forms.TextBox();
             this.DataLabel = new System.Windows.Forms.Label();
@@ -80,6 +80,17 @@
             this.panel1.Size = new System.Drawing.Size(618, 85);
             this.panel1.TabIndex = 2;
             // 
+            // HeaderBox
+            // 
+            this.HeaderBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.HeaderBox.Location = new System.Drawing.Point(0, 15);
+            this.HeaderBox.Multiline = true;
+            this.HeaderBox.Name = "HeaderBox";
+            this.HeaderBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.HeaderBox.Size = new System.Drawing.Size(618, 70);
+            this.HeaderBox.TabIndex = 1;
+            this.HeaderBox.Click += new System.EventHandler(this.CopyHeaderContent);
+            // 
             // HeaderLabel
             // 
             this.HeaderLabel.AutoSize = true;
@@ -90,16 +101,6 @@
             this.HeaderLabel.Size = new System.Drawing.Size(47, 12);
             this.HeaderLabel.TabIndex = 0;
             this.HeaderLabel.Text = "Header";
-            // 
-            // HeaderBox
-            // 
-            this.HeaderBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.HeaderBox.Location = new System.Drawing.Point(0, 15);
-            this.HeaderBox.Multiline = true;
-            this.HeaderBox.Name = "HeaderBox";
-            this.HeaderBox.Size = new System.Drawing.Size(618, 70);
-            this.HeaderBox.TabIndex = 1;
-            this.HeaderBox.Click += new System.EventHandler(this.CopyHeaderContent);
             // 
             // panel2
             // 
@@ -116,6 +117,7 @@
             this.DataBox.Location = new System.Drawing.Point(0, 15);
             this.DataBox.Multiline = true;
             this.DataBox.Name = "DataBox";
+            this.DataBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataBox.Size = new System.Drawing.Size(618, 70);
             this.DataBox.TabIndex = 1;
             this.DataBox.Click += new System.EventHandler(this.CopyDataContent);
@@ -146,6 +148,7 @@
             this.UrlBox.Location = new System.Drawing.Point(0, 15);
             this.UrlBox.Multiline = true;
             this.UrlBox.Name = "UrlBox";
+            this.UrlBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.UrlBox.Size = new System.Drawing.Size(618, 70);
             this.UrlBox.TabIndex = 1;
             // 
@@ -170,7 +173,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Data2JsonRequestControl";
-            this.Size = new System.Drawing.Size(627, 545);
+            this.Size = new System.Drawing.Size(610, 528);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
