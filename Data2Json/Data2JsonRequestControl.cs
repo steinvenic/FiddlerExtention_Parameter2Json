@@ -31,10 +31,17 @@ namespace Data2Json
         {
             set
             {
-                string s = System.Web.HttpUtility.UrlDecode((new JavaScriptSerializer()).Serialize(value));
-                string str = MyJson.CondenceString(s);
-                MyJson doc = MyJson.ParseObject(str);
-                HeaderBox.Text = doc.ToStrWithFormat();
+                if (null != value)
+                {
+                    string s = System.Web.HttpUtility.UrlDecode((new JavaScriptSerializer()).Serialize(value));
+                    string str = MyJson.CondenceString(s);
+                    MyJson doc = MyJson.ParseObject(str);
+                    HeaderBox.Text = doc.ToStrWithFormat();
+                }
+                else {
+                    HeaderBox.Text = "Null";
+                }
+
 
             }
 
