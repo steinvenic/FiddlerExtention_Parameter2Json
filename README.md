@@ -1,6 +1,6 @@
 # 功能  
 
-把Fiddler Post请求的数据转换为Json（Fiddler内不显示缩进，全选复制内容，粘贴后会有缩进）
+把Fiddler Post请求的数据转换为Json
 ![avatar](https://github.com/steinvenic/FiddlerExtention_Data2Json/blob/master/Screenshot.png)
 
 # 使用  
