@@ -4,7 +4,7 @@
 ![avatar](https://github.com/steinvenic/FiddlerExtention_Data2Json/blob/master/%E8%AF%B4%E6%98%8E.png)
 
 # 使用  
-* [下载Data2Json.dll](https://github.com/steinvenic/FiddlerExtention_Data2Json/releases)
+* [下载Parameter2Json.dll](https://github.com/steinvenic/FiddlerExtention_Data2Json/releases)
 * 将Data2Json.dll拷贝至Fiddler的Inspectors目录下
 * Fiddler目录:C:\Users\Your User Name\AppData\Local\Programs\Fiddler
 
