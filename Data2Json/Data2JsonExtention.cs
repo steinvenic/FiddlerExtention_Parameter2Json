@@ -21,7 +21,7 @@ namespace Data2Json
         public override void AddToTab(TabPage o)
         {
             _displayControl = new Data2JsonRequestControl();
-            o.Text = "Data2Json";
+            o.Text = "Parameter2Json";
             o.Controls.Add(_displayControl);
             o.Controls[0].Dock = DockStyle.Fill;
         }

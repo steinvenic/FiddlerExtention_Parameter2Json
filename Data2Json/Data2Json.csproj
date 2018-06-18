@@ -72,7 +72,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\eric\AppData\Local\Programs\Fiddler\Scripts"
-copy "$(TargetPath)" "C:\Users\eric\AppData\Local\Programs\Fiddler\Inspectors"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\eric\AppData\Local\Programs\Fiddler\Inspectors"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -28,42 +28,44 @@ namespace Data2Json
         }
         public Dictionary<string, string> Headers
         {
-
             set
             {
                 if (null != value)
                 {
                     //处理URL
-                    if (value["requestUrl"].Contains("?"))
+                    if (value["requestUrl"].Contains("?"))//URl是否包含参数
                     {
-                        string[] arrayUrlParse = value["requestUrl"].Split('?');
-                        string urlParses = arrayUrlParse[1];
-                        string[] urlQuerys = urlParses.Split('&');
+                        string[] arrayUrlParse = value["requestUrl"].Split('?');//分离参数和HOST
+                        string urlParses = arrayUrlParse[1];//获取所有参数
+                        string[] urlQuerys = urlParses.Split('&');//获取单个参数项
 
                         Dictionary<string, string> query = new Dictionary<string, string>();
                         foreach (string urlQuery in urlQuerys) {
-
                             string[] oneQuery = urlQuery.Split('=');
                             query.Add(oneQuery[0], oneQuery[1]);
                         }
                         string urlSerializeJSON = JsonConvert.SerializeObject(query, Formatting.Indented);
                         UrlBox.Text = urlSerializeJSON;
-
+                        value.Remove("requestUrl");
                     }
                     else {
                         UrlBox.Text = "Null";
                     }
 
-
-
                     //处理Header
+                    try
+                    {
+                        value.Remove("requestUrl");
+                    }
+                    catch {
+                    }
                     string strSerializeJSON = JsonConvert.SerializeObject(value, Formatting.Indented);
                     HeaderBox.Text = strSerializeJSON;
+
                 }
                 else {
                     HeaderBox.Text = "Null";
                 }
-
             }
 
         }
@@ -83,20 +85,26 @@ namespace Data2Json
                     else
                     {
                         string[] formParameters = ret.Split('&');
-
-                        Dictionary<string, string> oscar = new Dictionary<string, string>();
+                        Dictionary<string, string> dataDict = new Dictionary<string, string>();
                         foreach (string valuePair in formParameters)
                         {
                             System.Web.HttpUtility.UrlDecode(valuePair);
                             string[] formParameter = valuePair.Split('=');
 
-                            oscar.Add(System.Web.HttpUtility.UrlDecode(formParameter[0]), System.Web.HttpUtility.UrlDecode(formParameter[1]));
-                            PopulateGrid(oscar);
+                            try
+                            {
+                                dataDict.Add(System.Web.HttpUtility.UrlDecode(formParameter[0]), System.Web.HttpUtility.UrlDecode(formParameter[1]));
+                            }
+                            catch {
+
+                            }
+
+                            
+                            PopulateGrid(dataDict);
                         }
-                        string strSerializeJSON = JsonConvert.SerializeObject(oscar, Formatting.Indented);
+                        string strSerializeJSON = JsonConvert.SerializeObject(dataDict, Formatting.Indented);
                         DataBox.Text = strSerializeJSON;
                     }
-
 
                 }
                 else {
