@@ -1,11 +1,11 @@
 # 功能  
 
-把Fiddler Post请求的数据转换为Json
-![avatar](https://github.com/steinvenic/FiddlerExtention_Data2Json/blob/master/Screenshot.png)
+将每次请求的Header、POST数据、URL参数转为Json数据
+![avatar](https://github.com/steinvenic/FiddlerExtention_Data2Json/blob/master/%E8%AF%B4%E6%98%8E.png)
 
 # 使用  
 * [下载Data2Json.dll](https://github.com/steinvenic/FiddlerExtention_Data2Json/releases)
-* 将Data2Json.dll分别拷贝至Fiddler的Inspectors和Scripts目录下
+* 将Data2Json.dll拷贝至Fiddler的Inspectors目录下
 * Fiddler目录:C:\Users\Your User Name\AppData\Local\Programs\Fiddler
 
 # 参考  
