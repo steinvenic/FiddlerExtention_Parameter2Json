@@ -82,22 +82,37 @@ namespace Data2Json
         {
             dataGridView1.Rows.Clear();
 
-            foreach (string key in dictionary.Keys)
-            {
-                dataGridView1.Rows.Add(key, dictionary[key]);
-            }
+                foreach (string key in dictionary.Keys)
+                {
+                    dataGridView1.Rows.Add(key, dictionary[key]);
+                }
+
         }
 
         private void CopyDataContent(object sender, EventArgs e)
         {
-            Clipboard.SetDataObject(DataBox.Text);
-            PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(DataBox.Text));
+            if (DataBox.Text != "Null") {
+                Clipboard.SetDataObject(DataBox.Text);
+                PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(DataBox.Text));
+            }
+            else
+            {
+                dataGridView1.Rows.Clear();
+            }
+
         }
 
         private void CopyHeaderContent(object sender, EventArgs e)
         {
-            Clipboard.SetDataObject(HeaderBox.Text);
-            PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(HeaderBox.Text));
+            if (HeaderBox.Text != "Null")
+            {
+                Clipboard.SetDataObject(HeaderBox.Text);
+                PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(HeaderBox.Text));
+            }
+            else {
+                dataGridView1.Rows.Clear();
+            }
+
         }
     }
 }
