@@ -152,6 +152,7 @@
             this.UrlBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.UrlBox.Size = new System.Drawing.Size(618, 70);
             this.UrlBox.TabIndex = 1;
+            this.UrlBox.Click += new System.EventHandler(this.copyUrlContent);
             // 
             // UrlLabel
             // 
