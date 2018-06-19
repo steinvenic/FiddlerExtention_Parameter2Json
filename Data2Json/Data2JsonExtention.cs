@@ -49,7 +49,7 @@ namespace Data2Json
                 {
                     httpHeaders.Add(item.Name, item.Value);
                 }
-                httpHeaders.Add("requestUrl",headers.RequestPath);
+                httpHeaders.Add("requestUrl",headers.UriScheme + "://" + value["Host"] + headers.RequestPath);
                 _displayControl.Headers = httpHeaders;
             }
         }

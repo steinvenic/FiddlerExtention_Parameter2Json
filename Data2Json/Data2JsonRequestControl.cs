@@ -14,11 +14,6 @@ namespace Data2Json
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         public void Clear()
         {
             DataBox.Text = string.Empty;
@@ -30,42 +25,36 @@ namespace Data2Json
         {
             set
             {
-                if (null != value)
+                Dictionary<string, string> query = new Dictionary<string, string>();
+                //处理URL
+                if (value["requestUrl"].Contains("?"))//URl是否包含参数
                 {
-                    //处理URL
-                    if (value["requestUrl"].Contains("?"))//URl是否包含参数
-                    {
-                        string[] arrayUrlParse = value["requestUrl"].Split('?');//分离参数和HOST
-                        string urlParses = arrayUrlParse[1];//获取所有参数
-                        string[] urlQuerys = urlParses.Split('&');//获取单个参数项
-
-                        Dictionary<string, string> query = new Dictionary<string, string>();
-                        foreach (string urlQuery in urlQuerys) {
-                            string[] oneQuery = urlQuery.Split('=');
-                            query.Add(oneQuery[0], oneQuery[1]);
-                        }
-                        string urlSerializeJSON = JsonConvert.SerializeObject(query, Formatting.Indented);
-                        UrlBox.Text = urlSerializeJSON;
-                        value.Remove("requestUrl");
+                    string[] arrayUrlParse = value["requestUrl"].Split('?');//分离参数和HOST
+                    hostLabel.Text = arrayUrlParse[0];
+                    string urlParses = arrayUrlParse[1];//获取所有参数
+                    string[] urlQuerys = urlParses.Split('&');//获取单个参数项
+                    foreach (string urlQuery in urlQuerys) {
+                        string[] oneQuery = urlQuery.Split('=');
+                        query.Add(oneQuery[0], oneQuery[1]);
                     }
-                    else {
-                        UrlBox.Text = "Null";
-                    }
-
-                    //处理Header
-                    try
-                    {
-                        value.Remove("requestUrl");
-                    }
-                    catch {
-                    }
-                    string strSerializeJSON = JsonConvert.SerializeObject(value, Formatting.Indented);
-                    HeaderBox.Text = strSerializeJSON;
-
+                    string urlSerializeJSON = JsonConvert.SerializeObject(query, Formatting.Indented);
+                    UrlBox.Text = urlSerializeJSON;
+                    value.Remove("requestUrl");
                 }
                 else {
-                    HeaderBox.Text = "Null";
+                    UrlBox.Text = "Null";
+                    hostLabel.Text = value["requestUrl"];
                 }
+
+                //处理Header
+                try
+                {
+                    value.Remove("requestUrl");
+                }
+                catch {
+                }
+                string strSerializeJSON = JsonConvert.SerializeObject(value, Formatting.Indented);
+                HeaderBox.Text = strSerializeJSON;
             }
 
         }
@@ -98,7 +87,6 @@ namespace Data2Json
                             catch {
 
                             }
-
                             
                             PopulateGrid(dataDict);
                         }
@@ -129,7 +117,7 @@ namespace Data2Json
         {
             if (DataBox.Text != "Null") {
                 Clipboard.SetDataObject(DataBox.Text);
-                PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(DataBox.Text));
+                PopulateGrid(JsonConvert.DeserializeObject<Dictionary<string, string>>(DataBox.Text));
             }
             else
             {
@@ -143,7 +131,8 @@ namespace Data2Json
             if (HeaderBox.Text != "Null")
             {
                 Clipboard.SetDataObject(HeaderBox.Text);
-                PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(HeaderBox.Text));
+                //PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(HeaderBox.Text));
+                PopulateGrid(JsonConvert.DeserializeObject<Dictionary<string, string>>(HeaderBox.Text));
             }
             else {
                 dataGridView1.Rows.Clear();
@@ -156,12 +145,17 @@ namespace Data2Json
             if (UrlBox.Text != "Null")
             {
                 Clipboard.SetDataObject(UrlBox.Text);
-                PopulateGrid(new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(UrlBox.Text));
+                PopulateGrid(JsonConvert.DeserializeObject<Dictionary<string, string>>(UrlBox.Text));
             }
             else
             {
                 dataGridView1.Rows.Clear();
             }
+        }
+
+        private void copyHostUrlContent(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(hostLabel.Text);
         }
     }
 }
