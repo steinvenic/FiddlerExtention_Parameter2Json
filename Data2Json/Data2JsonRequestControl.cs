@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using FormateJson;
@@ -12,6 +13,30 @@ namespace Data2Json
         public Data2JsonRequestControl()
         {
             InitializeComponent();
+        }
+        private string ConvertJsonString(string str)
+        {
+            //格式化json字符串
+            JsonSerializer serializer = new JsonSerializer();
+            TextReader tr = new StringReader(str);
+            JsonTextReader jtr = new JsonTextReader(tr);
+            object obj = serializer.Deserialize(jtr);
+            if (obj != null)
+            {
+                StringWriter textWriter = new StringWriter();
+                JsonTextWriter jsonWriter = new JsonTextWriter(textWriter)
+                {
+                    Formatting = Formatting.Indented,
+                    Indentation = 4,
+                    IndentChar = ' '
+                };
+                serializer.Serialize(jsonWriter, obj);
+                return textWriter.ToString();
+            }
+            else
+            {
+                return str;
+            }
         }
 
         public void Clear()
@@ -38,7 +63,7 @@ namespace Data2Json
                         query.Add(oneQuery[0], oneQuery[1]);
                     }
                     string urlSerializeJSON = JsonConvert.SerializeObject(query, Formatting.Indented);
-                    UrlBox.Text = urlSerializeJSON;
+                    UrlBox.Text = ConvertJsonString(urlSerializeJSON);
                     value.Remove("requestUrl");
                 }
                 else {
@@ -54,7 +79,7 @@ namespace Data2Json
                 catch {
                 }
                 string strSerializeJSON = JsonConvert.SerializeObject(value, Formatting.Indented);
-                HeaderBox.Text = strSerializeJSON;
+                HeaderBox.Text = ConvertJsonString(strSerializeJSON);
             }
 
         }
@@ -91,7 +116,7 @@ namespace Data2Json
                             PopulateGrid(dataDict);
                         }
                         string strSerializeJSON = JsonConvert.SerializeObject(dataDict, Formatting.Indented);
-                        DataBox.Text = strSerializeJSON;
+                        DataBox.Text = ConvertJsonString(strSerializeJSON);
                     }
 
                 }
