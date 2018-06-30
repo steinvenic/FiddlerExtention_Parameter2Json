@@ -5,7 +5,7 @@
 
 # 使用  
 * 支持Fiddler4，不支持Fiddler2
-* [下载Parameter2Json.dll](https://github.com/steinvenic/FiddlerExtention_Data2Json/releases)
+* 下载[Parameter2Json.dll](https://github.com/steinvenic/FiddlerExtention_Data2Json/releases)
 * 将Data2Json.dll和Newtonsoft.Json.dll文件拷贝至Fiddler的Inspectors目录下
 * Fiddler目录:C:\Users\Your User Name\AppData\Local\Programs\Fiddler
 * V1.4新增请URL参数处理，点击URL可被复制
