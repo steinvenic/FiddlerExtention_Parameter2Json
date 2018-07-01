@@ -60,7 +60,7 @@ namespace Data2Json
                     string[] urlQuerys = urlParses.Split('&');//获取单个参数项
                     foreach (string urlQuery in urlQuerys) {
                         string[] oneQuery = urlQuery.Split('=');
-                        query.Add(oneQuery[0], oneQuery[1]);
+                        query.Add(System.Web.HttpUtility.UrlDecode(oneQuery[0]), System.Web.HttpUtility.UrlDecode(oneQuery[1]));
                     }
                     string urlSerializeJSON = JsonConvert.SerializeObject(query, Formatting.Indented);
                     UrlBox.Text = ConvertJsonString(urlSerializeJSON);
